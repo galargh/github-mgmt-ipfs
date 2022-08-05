@@ -752,9 +752,14 @@ repositories:
   github-mgmt:
     branch_protection:
       master: {}
-    collaborators:
+    collaborators: # NOTE: push+ access here should be treated as cautiosly as org admin role 
       admin:
         - galargh
+        - biglep
+      push:
+        - aschmahmann
+        - laurentsenta
+        - willscott
     files:
       .github/workflows/stale.yml:
         branch: master
@@ -762,12 +767,9 @@ repositories:
       CODEOWNERS:
         content: >
           *       @ipfs/ipdx
-    teams:
-      maintain:
-        - ipdx
-      push:
-        - org-admins
-        - w3dt-stewards # consider removing once org-admins has enough members
+    teams: # NOTE: do not add teams with push+ access, add push+ collaborators directly instead
+      push: # TODO: remove once there are enough push+ collaborators
+        - w3dt-stewards
     visibility: public
   go-bitfield:
     collaborators:
@@ -4959,13 +4961,6 @@ teams:
         - galargh
         - laurentsenta
     parent_team_id: w3dt-stewards
-    privacy: closed
-  org-admins: # created as a result of discussion in https://github.com/ipfs/github-mgmt/pull/30 
-    create_default_maintainer: false
-    description: Users that should be allowed to perform any action an org admin can perform
-    members:
-      member:
-        - willscott
     privacy: closed
   w3dt-stewards:
     members:
